@@ -1,0 +1,71 @@
+{{!-- 
+Це код container файлу для index сторінки, 
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
+ --}}
+
+
+
+<header class="header">
+    <div>
+        {{> logo}}
+    </div>
+
+    <nav class="header_nav">
+       <div class="header_nav_right ">
+            {{> nav list=header}}
+        </div>
+        </nav>
+</header>
+
+{{#with main}}
+<main class="main">
+    <img src="{{image}}" alt="Main Image" class="main_image">
+    <div class="main_content">
+        <h1 class="main_title">{{heading}}</h1>
+        <p class="main_text">{{description}}</p>
+        <a href="{{href}}" class="button main_button">{{button}}</a>
+    </div>
+</main>
+{{/with}}
+
+<div class="featured">
+    {{#each featured}}
+    <div class="featured_card">
+        <div class="featured_image" style="background-image: url({{photo}});"></div>
+        <h2 class="featured_title">{{heading}}</h2>
+        <p class="featured_text">{{info}}</p>
+        <a href="{{linkUrl}}" class="featured_link">{{linkText}}</a>
+    </div>
+    {{/each}}
+</div>
+
+<div class="actions">
+    {{#each actions}}
+        <div class="action_card">
+            <div class="action_title">{{heading}}</div>
+            <a href="{{url}}" class="button action_button">{{text}}</a>
+        </div>
+    {{/each}}
+</div>
+
+      
+<footer class="footer">
+    <div>
+        {{> logo}}
+        <span class="footer_copyright">Copyright 2023-2024</span>
+    </div>
+
+    {{#each footer}}
+        <div>
+            <span class="footer_title">{{title}}</span>
+            {{>nav list=links isVertical=true}}
+        </div>
+    {{/each}}
+</footer>
+    
+
+
+{{!-- 
+    Цей код містить лише те, що буде виводитись в <body>
+    Адже наш layout/default.hbs має вже структуру HTML
+--}}
